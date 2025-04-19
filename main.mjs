@@ -18,14 +18,27 @@ test.set("lion", "golden");
 // Rehash breakpoint
 test.set("moon", "silver");
 
+console.log('get("apple")');
 console.log(test.get("apple"));
+
+console.log('has("ice cream")');
 console.log(test.has("ice cream"));
+
+console.log('Keys before remove("carrot")');
+console.log(test.keys());
+console.log('Keys after remove("carrot")');
 console.log(test.remove("carrot"));
 console.log(test.keys());
+
+console.log("length()");
 console.log(test.length());
-// console.log(test);
-// console.log(test);
-// console.log(test);
-// console.log(test);
-// console.log(test);
-// console.log(test);
+
+console.log("values()");
+console.log(test.values());
+
+console.log("entries()");
+console.log(test.entries());
+
+console.log("hashmap after clear()");
+test.clear();
+console.log(test.hashmap);
