@@ -66,6 +66,16 @@ export function Hashmap() {
 
       return bucket ? bucket.removeExisting(key) : false;
     },
+
+    length() {
+      let length = 0;
+      for (const bucket of this.hashmap) {
+        if (bucket) {
+          length += bucket.size();
+        }
+      }
+      return length;
+    },
   };
 }
 

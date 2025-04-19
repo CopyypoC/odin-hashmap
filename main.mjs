@@ -5,6 +5,6 @@ const test = Hashmap();
 test.set("apple", "red");
 test.set("banana", "yellow");
 test.set("banana", "green");
+test.set("peach", "a");
 
-console.log(test.remove("apple"));
-console.log(test.remove("a"));
+console.log(test.length());
