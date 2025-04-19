@@ -4,7 +4,6 @@ const test = HashMap();
 
 test.set("apple", "red");
 test.set("banana", "yellow");
-test.set("banana", "green");
-test.set("peach", "a");
+test.set("grape", "purple");
 
 console.log(test.keys());

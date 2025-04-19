@@ -164,6 +164,7 @@ export class LinkedList {
   getKeys() {
     const keys = [];
     this.currNode = this.headNode;
+    debugger;
 
     while (this.currNode !== null) {
       keys.push(this.currNode.key);
