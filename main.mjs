@@ -6,4 +6,4 @@ test.set("apple", "red");
 test.set("banana", "yellow");
 test.set("grape", "purple");
 
-console.log(test.keys());
+console.log(test.entries());

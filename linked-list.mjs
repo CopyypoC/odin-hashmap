@@ -164,13 +164,24 @@ export class LinkedList {
   getKeys() {
     const keys = [];
     this.currNode = this.headNode;
-    debugger;
 
     while (this.currNode !== null) {
       keys.push(this.currNode.key);
       this.currNode = this.currNode.nextNode;
     }
     return keys;
+  }
+
+  getValues() {
+    const values = [];
+    this.currNode = this.headNode;
+    debugger;
+
+    while (this.currNode !== null) {
+      values.push(this.currNode.value);
+      this.currNode = this.currNode.nextNode;
+    }
+    return values;
   }
 }
 

@@ -91,6 +91,25 @@ export function HashMap() {
       return keys;
     },
 
-    values() {},
+    values() {
+      const values = [];
+      for (const bucket of this.hashmap) {
+        if (bucket) {
+          values.push(...bucket.getValues());
+        }
+      }
+      return values;
+    },
+
+    entries() {
+      const keys = this.keys();
+      const values = this.values();
+      const entriesArr = [];
+
+      for (let i = 0; i < keys.length; i++) {
+        entriesArr.push([keys[i], values[i]]);
+      }
+      return entriesArr;
+    },
   };
 }
