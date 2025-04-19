@@ -160,6 +160,17 @@ export class LinkedList {
     }
     return false;
   }
+
+  getKeys() {
+    const keys = [];
+    this.currNode = this.headNode;
+
+    while (this.currNode !== null) {
+      keys.push(this.currNode.key);
+      this.currNode = this.currNode.nextNode;
+    }
+    return keys;
+  }
 }
 
 class Node {

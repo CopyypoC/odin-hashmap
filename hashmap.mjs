@@ -9,7 +9,7 @@ export function Hashmap() {
     hashmap: [],
     entries: 0,
 
-    hash: (key) => {
+    hash(key) {
       let hashCode = 0;
 
       const primeNumber = 31;
@@ -80,12 +80,15 @@ export function Hashmap() {
     clear() {
       this.hashmap.length = 0;
     },
+
+    keys() {
+      const keys = [];
+      for (const bucket of this.hashmap) {
+        if (bucket) {
+          keys.push(...bucket.getKeys());
+        }
+      }
+      return keys;
+    },
   };
 }
-
-// Carlos, Jay hash to index 0
-//
-
-// [headNode, headNode, headNode]
-//     0         1         2
-// ()
