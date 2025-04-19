@@ -1,6 +1,6 @@
 import { LinkedList } from "./linked-list.mjs";
 
-export function Hashmap() {
+export function HashMap() {
   const capacity = 16;
   const loadFactor = 0.75;
   return {
@@ -90,5 +90,7 @@ export function Hashmap() {
       }
       return keys;
     },
+
+    values() {},
   };
 }
