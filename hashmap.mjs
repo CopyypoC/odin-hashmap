@@ -1,20 +1,18 @@
 import { LinkedList } from "./linked-list.mjs";
 
 export function HashMap() {
-  const capacity = 16;
-  const loadFactor = 0.75;
   return {
-    capacity,
-    loadFactor,
+    capacity: 16,
+    loadFactor: 0.75,
     hashmap: [],
-    entries: 0,
+    entryCount: 0,
 
     hash(key) {
       let hashCode = 0;
 
       const primeNumber = 31;
       for (let i = 0; i < key.length; i++) {
-        hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % capacity;
+        hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity;
       }
 
       return hashCode;
@@ -28,6 +26,7 @@ export function HashMap() {
         const bucket = new LinkedList();
         bucket.append(key, value);
         this.hashmap[hashCode] = bucket;
+        this.entryCount++;
       } else {
         const bucket = this.hashmap[hashCode];
         // If matching key, update value
@@ -36,13 +35,22 @@ export function HashMap() {
         } else {
           // End of list means no match, append to end
           bucket.append(key, value);
-          this.entries++;
+          this.entryCount++;
         }
 
-        if (this.entries > capacity * loadFactor) {
-          capacity *= 2;
-          // rehash
+        if (this.entryCount > this.capacity * this.loadFactor) {
+          this.rehash();
         }
+      }
+    },
+
+    rehash() {
+      const entriesArr = this.entries();
+      this.hashmap.length = 0;
+      this.capacity *= 2;
+
+      for (const entry of entriesArr) {
+        this.set(entry[0], entry[1]);
       }
     },
 
@@ -64,17 +72,16 @@ export function HashMap() {
       const hashCode = this.hash(key);
       const bucket = this.hashmap[hashCode];
 
-      return bucket ? bucket.removeExisting(key) : false;
+      if (bucket && bucket.removeExisting(key)) {
+        this.entryCount--;
+        return true;
+      } else {
+        return false;
+      }
     },
 
     length() {
-      let length = 0;
-      for (const bucket of this.hashmap) {
-        if (bucket) {
-          length += bucket.size();
-        }
-      }
-      return length;
+      return this.keys().length;
     },
 
     clear() {

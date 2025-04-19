@@ -146,17 +146,23 @@ export class LinkedList {
   }
 
   removeExisting(key) {
-    this.currNode = this.headNode;
-    let prevNode = this.currNode;
+    let currNode = this.headNode;
+    let prevNode = currNode;
 
-    while (this.currNode !== null) {
-      if (this.currNode.key === key) {
-        prevNode.nextNode = this.currNode.nextNode;
-        this.currNode = null;
+    while (currNode !== null) {
+      if (currNode.key === key) {
+        if (currNode === this.headNode) {
+          prevNode = null;
+          this.headNode = currNode.nextNode;
+          currNode = null;
+        } else {
+          prevNode.nextNode = currNode.nextNode;
+          currNode = null;
+        }
         return true;
       }
-      prevNode = this.currNode;
-      this.currNode = this.currNode.nextNode;
+      prevNode = currNode;
+      currNode = currNode.nextNode;
     }
     return false;
   }
@@ -175,7 +181,6 @@ export class LinkedList {
   getValues() {
     const values = [];
     this.currNode = this.headNode;
-    debugger;
 
     while (this.currNode !== null) {
       values.push(this.currNode.value);
