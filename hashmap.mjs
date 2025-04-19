@@ -76,6 +76,10 @@ export function Hashmap() {
       }
       return length;
     },
+
+    clear() {
+      this.hashmap.length = 0;
+    },
   };
 }
 

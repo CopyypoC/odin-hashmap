@@ -7,4 +7,6 @@ test.set("banana", "yellow");
 test.set("banana", "green");
 test.set("peach", "a");
 
-console.log(test.length());
+console.log(test.hashmap);
+console.log(test.clear());
+console.log(test.hashmap);
