@@ -59,6 +59,13 @@ export function Hashmap() {
 
       return bucket.containsKey(key);
     },
+
+    remove(key) {
+      const hashCode = this.hash(key);
+      const bucket = this.hashmap[hashCode];
+
+      return bucket ? bucket.removeExisting(key) : false;
+    },
   };
 }
 

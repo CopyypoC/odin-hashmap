@@ -144,6 +144,22 @@ export class LinkedList {
     }
     return null;
   }
+
+  removeExisting(key) {
+    this.currNode = this.headNode;
+    let prevNode = this.currNode;
+
+    while (this.currNode !== null) {
+      if (this.currNode.key === key) {
+        prevNode.nextNode = this.currNode.nextNode;
+        this.currNode = null;
+        return true;
+      }
+      prevNode = this.currNode;
+      this.currNode = this.currNode.nextNode;
+    }
+    return false;
+  }
 }
 
 class Node {
